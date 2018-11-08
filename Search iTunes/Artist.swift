@@ -22,12 +22,30 @@ struct Results: Codable {
 func loadData(from url: URL, complition: @escaping ([Artist]) -> Void) {
     var results = [Artist]()
     
-    if let data = try? Data(contentsOf: url) {
-        
-        let decoder = JSONDecoder()
-        if let jsonData = try? decoder.decode(Results.self, from: data) {
-            results = jsonData.results
+//    if let data = try? Data(contentsOf: url) {
+//
+//        let decoder = JSONDecoder()
+//        if let jsonData = try? decoder.decode(Results.self, from: data) {
+//            results = jsonData.results
+//        }
+//        complition(results)
+//    }
+    
+    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
+            let decoder = JSONDecoder()
+            
+            if let jsonData = try? decoder.decode(Results.self, from: data) {
+                results = jsonData.results
+                DispatchQueue.main.async {
+                    complition(results)
+                }
+            }
+            
         }
-        complition(results)
     }
+    task.resume()
 }
+    
+
+

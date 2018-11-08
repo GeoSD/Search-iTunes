@@ -84,6 +84,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="64T-CJ-Ou8">
+                            <rect key="frame" x="0.0" y="72" width="320" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultsCell" textLabel="S9t-sj-AEy" detailTextLabel="4h1-rz-1km" style="IBUITableViewCellStyleSubtitle" id="7ZW-a5-AA2">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
@@ -122,6 +126,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="64T-CJ-Ou8" id="BtA-Fz-QWX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VMm-T2-Gnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

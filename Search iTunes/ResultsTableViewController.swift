@@ -11,6 +11,8 @@ import AVKit
 
 class ResultsTableViewController: UITableViewController {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var results = [Artist]()
     var images = [UIImage]()
     
@@ -26,16 +28,21 @@ class ResultsTableViewController: UITableViewController {
         if let url = basicURL?.withQueries(query) {
             loadData(from: url, complition: { (results) in
                 self.results = results
+                
+                for index in results.indices {
+                    let image = self.loadImage(from: results[index].artworkUrl60)
+                    self.images.append(image!)
+                }
+                self.activityIndicator.stopAnimating()
                 self.tableView.reloadData()
             })
         }
-        
-        for index in results.indices {
-            let image = loadImage(from: results[index].artworkUrl60)
-            images.append(image!)
-        }
-        
         navigationItem.title = "Search results for: \(searchText)"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        activityIndicator.startAnimating()
     }
     
     // MARK: - Table view data source
