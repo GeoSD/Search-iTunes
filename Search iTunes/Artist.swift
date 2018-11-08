@@ -19,14 +19,15 @@ struct Results: Codable {
     var results: [Artist]
 }
 
-func loadData(from url: URL) -> [Artist] {
+func loadData(from url: URL, complition: @escaping ([Artist]) -> Void) {
     var results = [Artist]()
+    
     if let data = try? Data(contentsOf: url) {
         
         let decoder = JSONDecoder()
         if let jsonData = try? decoder.decode(Results.self, from: data) {
             results = jsonData.results
         }
+        complition(results)
     }
-    return results
 }

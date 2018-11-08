@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class ResultsTableViewController: UITableViewController {
     
@@ -23,7 +24,10 @@ class ResultsTableViewController: UITableViewController {
         
         query = ["term": searchText, "country": "ru", "entity": "musicVideo"]
         if let url = basicURL?.withQueries(query) {
-            results = loadData(from: url)
+            loadData(from: url, complition: { (results) in
+                self.results = results
+                self.tableView.reloadData()
+            })
         }
         
         for index in results.indices {
@@ -31,7 +35,7 @@ class ResultsTableViewController: UITableViewController {
             images.append(image!)
         }
         
-        navigationItem.title = "Search results for : \(searchText)."
+        navigationItem.title = "Search results for: \(searchText)"
     }
     
     // MARK: - Table view data source
@@ -57,18 +61,20 @@ class ResultsTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let url = URL(string: results[indexPath.row].previewUrl) else { return }
+        let video = AVPlayer(url: url)
+        let videoPlayer = AVPlayerViewController()
+        videoPlayer.player = video
+        
+        present(videoPlayer, animated: true) {
+            video.play()
+        }
+    }
+    
     // MARK: - Navigation
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PreviewSegue" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let previewViewController = segue.destination as! PreviewViewController
-                previewViewController.stringURL = results[indexPath.row].previewUrl
-            }
-        }
     }
     
     func loadImage(from stringURL: String) -> UIImage? {

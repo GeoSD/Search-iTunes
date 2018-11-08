@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,11 +20,11 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Gm8-sH-ata">
                                 <rect key="frame" x="16" y="260" width="288" height="68"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3y-eF-xYh">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j3y-eF-xYh">
                                         <rect key="frame" x="16" y="0.0" width="256" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                         <connections>
                                             <action selector="textEditingChanged:" destination="qdK-6i-8f9" eventType="editingChanged" id="5Wq-do-Yf0"/>
                                         </connections>
@@ -50,12 +49,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Be5-lm-p2g">
+                                <rect key="frame" x="150" y="284" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Be5-lm-p2g" firstAttribute="centerX" secondItem="MkV-Y5-bAd" secondAttribute="centerX" id="8TI-h4-V37"/>
                             <constraint firstItem="4im-Gc-zfM" firstAttribute="centerX" secondItem="MkV-Y5-bAd" secondAttribute="centerX" id="GUa-my-Z5U"/>
                             <constraint firstItem="Gm8-sH-ata" firstAttribute="centerY" secondItem="MkV-Y5-bAd" secondAttribute="centerY" id="JPJ-3c-JcO"/>
                             <constraint firstItem="Gm8-sH-ata" firstAttribute="centerX" secondItem="MkV-Y5-bAd" secondAttribute="centerX" id="NFI-Ev-Ah2"/>
+                            <constraint firstItem="Be5-lm-p2g" firstAttribute="centerY" secondItem="MkV-Y5-bAd" secondAttribute="centerY" id="XHh-vc-Myc"/>
                             <constraint firstItem="Gm8-sH-ata" firstAttribute="top" secondItem="4im-Gc-zfM" secondAttribute="bottom" constant="16" id="lzo-Ik-FLy"/>
                             <constraint firstItem="Gm8-sH-ata" firstAttribute="leading" secondItem="MkV-Y5-bAd" secondAttribute="leading" constant="16" id="qU4-se-niC"/>
                             <constraint firstItem="MkV-Y5-bAd" firstAttribute="trailing" secondItem="Gm8-sH-ata" secondAttribute="trailing" constant="16" id="sCH-IU-JiV"/>
@@ -63,6 +67,7 @@
                         <viewLayoutGuide key="safeArea" id="MkV-Y5-bAd"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Be5-lm-p2g" id="RtA-uc-IO1"/>
                         <outlet property="searchButton" destination="AUI-xf-GQc" id="MQJ-Xs-FZh"/>
                         <outlet property="searchTextField" destination="j3y-eF-xYh" id="nck-fi-jBj"/>
                     </connections>
@@ -103,9 +108,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="MTP-Sr-bLE" kind="show" identifier="PreviewSegue" id="GUg-Ry-DET"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -124,40 +126,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VMm-T2-Gnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1361" y="64"/>
-        </scene>
-        <!--Preview View Controller-->
-        <scene sceneID="d5r-hL-lyd">
-            <objects>
-                <viewController id="MTP-Sr-bLE" customClass="PreviewViewController" customModule="Search_iTunes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QAS-K6-hW4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SNL-QX-Ybc">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="tGk-JR-k1o" firstAttribute="bottom" secondItem="SNL-QX-Ybc" secondAttribute="bottom" id="OJA-a0-Sgd"/>
-                            <constraint firstItem="SNL-QX-Ybc" firstAttribute="leading" secondItem="tGk-JR-k1o" secondAttribute="leading" id="R3C-oG-RX0"/>
-                            <constraint firstItem="tGk-JR-k1o" firstAttribute="trailing" secondItem="SNL-QX-Ybc" secondAttribute="trailing" id="oQz-Rq-GZP"/>
-                            <constraint firstItem="SNL-QX-Ybc" firstAttribute="top" secondItem="tGk-JR-k1o" secondAttribute="top" id="yM1-yL-V0J"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="tGk-JR-k1o"/>
-                    </view>
-                    <connections>
-                        <outlet property="webView" destination="SNL-QX-Ybc" id="WqB-oW-LQm"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D69-vc-lhh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2224" y="57"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XfC-WS-kLV">

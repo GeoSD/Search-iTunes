@@ -12,11 +12,18 @@ class SearchViewController: UIViewController {
 
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         updateSearchButtonState()
         setupViewResizerOnKeyboardShown()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        view.alpha = 1.0
+        activityIndicator.stopAnimating()
     }
     
     // MARK: - Navigation
@@ -33,6 +40,8 @@ class SearchViewController: UIViewController {
     }
 
     @IBAction func searchButtonTapped(_ sender: UIButton) {
+        view.alpha = 0.5
+        activityIndicator.startAnimating()
     }
     
     @IBAction func textEditingChanged(_ sender: UITextField) {

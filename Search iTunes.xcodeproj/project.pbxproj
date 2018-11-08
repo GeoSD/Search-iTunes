@@ -14,7 +14,6 @@
 		66EE39612192DAB3001FDC3B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE39602192DAB3001FDC3B /* SearchViewController.swift */; };
 		66EE39632192DC5D001FDC3B /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE39622192DC5D001FDC3B /* ResultsTableViewController.swift */; };
 		66EE39652192E522001FDC3B /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE39642192E522001FDC3B /* Artist.swift */; };
-		66EE396721931D03001FDC3B /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EE396621931D03001FDC3B /* PreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		66EE39602192DAB3001FDC3B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		66EE39622192DC5D001FDC3B /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		66EE39642192E522001FDC3B /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
-		66EE396621931D03001FDC3B /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +63,6 @@
 				66EE39642192E522001FDC3B /* Artist.swift */,
 				66EE39602192DAB3001FDC3B /* SearchViewController.swift */,
 				66EE39622192DC5D001FDC3B /* ResultsTableViewController.swift */,
-				66EE396621931D03001FDC3B /* PreviewViewController.swift */,
 				66EE39552192D53C001FDC3B /* Assets.xcassets */,
 				66EE39572192D53C001FDC3B /* LaunchScreen.storyboard */,
 				66EE395A2192D53C001FDC3B /* Info.plist */,
@@ -147,7 +144,6 @@
 				66EE39632192DC5D001FDC3B /* ResultsTableViewController.swift in Sources */,
 				66EE39612192DAB3001FDC3B /* SearchViewController.swift in Sources */,
 				66EE39652192E522001FDC3B /* Artist.swift in Sources */,
-				66EE396721931D03001FDC3B /* PreviewViewController.swift in Sources */,
 				66EE394F2192D53A001FDC3B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
